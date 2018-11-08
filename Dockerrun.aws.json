@@ -5,9 +5,31 @@
 			"name": "client",
 			"image": "xneyder/multi-client",
 			"hostname": "client",
-			"essentia": false
+			"essential": false
+		},
+		{
+                        "name": "server",
+                        "image": "xneyder/multi-server",
+                        "hostname": "api",
+                        "essential": false
+                },
+		{
+                        "name": "worker",
+                        "image": "xneyder/multi-worker",
+                        "hostname": "worker",
+                        "essential": false
+                },
+                {
+                        "name": "nginx",
+                        "image": "xneyder/multi-nginx",
+                        "hostname": "nginx",
+                        "essential": true,
+			"portMappings": [
+				"hostPort": 80,
+				"containerPort": 80
+			],
+			"links": ["client","server"]
+                },
 
-		}
 	]
-
 }
