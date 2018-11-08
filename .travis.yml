@@ -14,7 +14,7 @@ after_success:
         - docker build -t xneyder/multi-server ./server
         - docker build -t xneyder/multi-worker ./worker
         #Login to docker CLI
-        - echo "$DOCKSER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
         #Push images to dockerhub
         - docker push xneyder/multi-client
         - docker push xneyder/multi-nginx
