@@ -4,7 +4,8 @@
 		{
 			"name": "client",
 			"image": "xneyder/multi-client",
-			"hostname": "client"
+			"hostname": "client",
+			"essentia": false
 
 		}
 	]
