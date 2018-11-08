@@ -1,0 +1,23 @@
+sudo: required
+services:
+        - docker
+before_install:
+        - docker build -t xneyder/react-test -f ./client/Dockerfile.dev ./client
+
+
+script:
+        - docker run xneyder/react-test npm test -- --coverage
+
+after_success:
+        - docker build -t xneyder/multi-client ./client
+        - docker build -t xneyder/multi-nginx ./nginx
+        - docker build -t xneyder/multi-server ./server
+        - docker build -t xneyder/multi-worker ./worker
+        #Login to docker CLI
+        - echo "$DOCKSER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+        #Push images to dockerhub
+        - docker push xneyder/multi-client
+        - docker push xneyder/multi-nginx
+        - docker push xneyder/multi-server
+        - docker push xneyder/multi-worker
+          
