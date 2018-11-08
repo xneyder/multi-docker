@@ -1,0 +1,12 @@
+{
+	"AWSEBDockerrunVersion": 2,
+	"containerDefinitions": [
+		{
+			"name": "client",
+			"image": "xneyder/multi-client",
+			"hostname": "client"
+
+		}
+	]
+
+}
