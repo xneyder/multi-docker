@@ -20,4 +20,3 @@ after_success:
         - docker push xneyder/multi-nginx
         - docker push xneyder/multi-server
         - docker push xneyder/multi-worker
-          
